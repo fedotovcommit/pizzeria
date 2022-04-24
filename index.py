@@ -1,14 +1,22 @@
 class Product:
     def __init__(self, title, calorific, cost):
-        self.title = title
-        self.calorific = calorific
-        self.cost = cost
+        if calorific <= 0:
+            raise ValueError('Калорийность должна быть больше 0')
+        elif cost <= 0:
+            ValueError('Себестоимость должна быть больше 0')
+        else:
+            self.title = title
+            self.calorific = calorific
+            self.cost = cost
 
 
 class Ingredient():
     def __init__(self, product, weight):
-        self.product = Product
-        self.weight = weight
+        if weight <= 0:
+            raise ValueError('Вес должен быть больше 0')
+        else:
+            self.product = Product
+            self.weight = weight
 
     def get_calorific(self):
         return self.weight / 100 * self.calorific
@@ -19,8 +27,11 @@ class Ingredient():
 
 class Pizza (Ingredient):
     def __init__(self, title, ingredients):
-        self.title = title
-        self.ingredients = ingredients
+        if not title:
+            raise ValueError('Название пиццы не может быть пустым')
+        else:
+            self.title = title
+            self.ingredients = ingredients
 
 
 # Создаем продукты с указанием названия, калорийности продукта и его себестоимости
