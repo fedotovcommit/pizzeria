@@ -12,7 +12,7 @@ class Product:
 
 class Ingredient():
     def __init__(self, product, weight):
-        if weight <= 0:
+        if weight < 0:
             raise ValueError('Вес должен быть больше 0')
         else:
             self.product = Product
