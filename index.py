@@ -1,9 +1,11 @@
 class Product:
     def __init__(self, title, calorific, cost):
-        if calorific <= 0:
+        if not title:
+            raise ValueError('Название продукта не может быть пустым')
+        elif calorific <= 0:
             raise ValueError('Калорийность должна быть больше 0')
         elif cost <= 0:
-            ValueError('Себестоимость должна быть больше 0')
+            raise ValueError('Себестоимость должна быть больше 0')
         else:
             self.title = title
             self.calorific = calorific
@@ -12,7 +14,7 @@ class Product:
 
 class Ingredient():
     def __init__(self, product, weight):
-        if weight < 0:
+        if weight <= 0:
             raise ValueError('Вес должен быть больше 0')
         else:
             self.product = Product
