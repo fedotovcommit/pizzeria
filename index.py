@@ -36,7 +36,7 @@ class Product:
     @cost.setter
     def cost(self, value):
         if value <= 0:
-            raise ValueError('Калорийность должна быть положительной')
+            raise ValueError('Себестоимость должна быть положительной')
         else:
             self.__cost = value
 
@@ -44,7 +44,7 @@ class Product:
 class Ingredient(Product):
     def __init__(self, product, weight):
             self.product = product
-            self.weight = weight
+            self.__weight = weight
 
     @property
     def weight(self):
@@ -103,3 +103,5 @@ pizza_margarita_light = Pizza('Маргарита', [dough_ingredient, cheese_in
 # Выводим экземпляр пиццы
 print(pizza_margarita)
 print(pizza_margarita_light)
+
+print(cheese_ingredient.get_calorific())
