@@ -1,6 +1,3 @@
-from typing import Type
-
-
 class Product:
     def __init__(self, title, calorific, cost):
             self.__title = title
