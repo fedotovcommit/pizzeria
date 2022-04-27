@@ -46,6 +46,17 @@ class Ingredient(Product):
             self.product = product
             self.weight = weight
 
+    @property
+    def weight(self):
+        return self.__weight
+
+    @weight.setter
+    def weight(self, value):
+        if value <= 0:
+            raise ValueError('Вес должен быть положительным')
+        else:
+            self.__weight = value
+
     def get_calorific(self):
         return self.product.calorific
 
@@ -55,8 +66,8 @@ class Ingredient(Product):
 
 class Pizza (Ingredient):
     def __init__(self, title, ingredients):
-            self.title = title
-            self.ingredients = ingredients
+        self.title = title
+        self.ingredients = ingredients
 
     def get_calorific(self):
         total_calorific = 0
