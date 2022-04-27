@@ -3,9 +3,20 @@ from typing import Type
 
 class Product:
     def __init__(self, title, calorific, cost):
-            self.title = title
+            self.__title = title
             self.calorific = calorific
             self.cost = cost
+
+    @property
+    def title(self):
+        return self.__title
+
+    @title.setter
+    def title(self, value):
+        if not value:
+            raise ValueError('Название обязательно для заполнения')
+        else:
+            self.__title = value
 
 
 class Ingredient(Product):
