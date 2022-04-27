@@ -18,6 +18,28 @@ class Product:
         else:
             self.__title = value
 
+    @property
+    def calorific(self):
+        return self.__calorific
+
+    @calorific.setter
+    def calorific(self, value):
+        if value <= 0:
+            raise ValueError('Калорийность должна быть положительной')
+        else:
+            self.__calorific = value
+
+    @property
+    def cost(self):
+        return self.__cost
+
+    @cost.setter
+    def cost(self, value):
+        if value <= 0:
+            raise ValueError('Калорийность должна быть положительной')
+        else:
+            self.__cost = value
+
 
 class Ingredient(Product):
     def __init__(self, product, weight):
