@@ -1,42 +1,44 @@
+from typing import Type
+
+
 class Product:
     def __init__(self, title, calorific, cost):
-        if not title:
-            is_error = True
-        elif calorific <= 0:
-            is_error = True
-        elif cost <= 0:
-            is_error = True
-        else:
             self.title = title
             self.calorific = calorific
             self.cost = cost
 
 
-class Ingredient():
+class Ingredient(Product):
     def __init__(self, product, weight):
-        super().__init__()
-        if weight <= 0:
-            raise ValueError('Вес должен быть больше 0')
-        else:
-            self.product = Product
+            self.product = product
             self.weight = weight
 
     def get_calorific(self):
-        return self.weight / 100 * self.calorific
+        return self.product.calorific
 
     def get_cost(self):
-        return self.weight / 100 * self.cost
+        return self.weight / 100 * self.product.cost
 
 
 class Pizza (Ingredient):
     def __init__(self, title, ingredients):
-        if not title:
-            raise ValueError('Название пиццы не может быть пустым')
-        else:
             self.title = title
             self.ingredients = ingredients
 
+    def get_calorific(self):
+        total_calorific = 0
+        for ingredient in self.ingredients:
+            total_calorific += ingredient.get_calorific()
+        return total_calorific
 
+    def get_cost(self):
+        total_cost = 0
+        for ingredient in self.ingredients:
+            total_cost += ingredient.get_cost()
+        return total_cost
+
+    def __str__(self):
+        return f'{self.title} ({self.get_calorific()} kkal) - {self.get_cost()} руб'
 
 
 # Создаем продукты с указанием названия, калорийности продукта и его себестоимости
