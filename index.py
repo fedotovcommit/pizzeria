@@ -103,5 +103,3 @@ pizza_margarita_light = Pizza('Маргарита', [dough_ingredient, cheese_in
 # Выводим экземпляр пиццы
 print(pizza_margarita)
 print(pizza_margarita_light)
-
-print(cheese_ingredient.get_calorific())
