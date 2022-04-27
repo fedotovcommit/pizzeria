@@ -1,8 +1,8 @@
 class Product:
     def __init__(self, title, calorific, cost):
-            self.__title = title
-            self.calorific = calorific
-            self.cost = cost
+        self.__title = title
+        self.calorific = calorific
+        self.cost = cost
 
     @property
     def title(self):
@@ -38,7 +38,7 @@ class Product:
             self.__cost = value
 
 
-class Ingredient(Product):
+class Ingredient():
     def __init__(self, product, weight):
             self.product = product
             self.__weight = weight
@@ -61,9 +61,9 @@ class Ingredient(Product):
         return self.weight / 100 * self.product.cost
 
 
-class Pizza (Ingredient):
+class Pizza (Product):
     def __init__(self, title, ingredients):
-        self.title = title
+        super().__init__(title, 1, 1)
         self.ingredients = ingredients
 
     def get_calorific(self):
